@@ -1,0 +1,56 @@
+@mixin heading-1 {
+  font-size: 70px;
+  letter-spacing: -5px;
+  font-weight: 300;
+  line-height: 100%;
+
+  @include media(">tablet") {
+    font-size: 145px;
+  }
+}
+
+@mixin heading-2 {
+  letter-spacing: -5px;
+  font-weight: 300;
+  line-height: 100%;
+  font-size: 64px;
+
+  @include media(">phone") {
+    font-size: 88px;
+  }
+}
+
+@mixin heading-3 {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: -2px;
+
+  @include media(">tablet") {
+    font-size: 36px;
+  }
+}
+
+@mixin title-small {
+  font-weight: 500;
+  line-height: 1;
+  font-size: 15px;
+}
+
+@mixin paragraph {
+  @include title-small;
+  letter-spacing: normal;
+  line-height: 1.3;
+  font-weight: 400;
+}
+
+@mixin variableFonts($min, $max) {
+  --max-size: #{$max};
+  --min-size: #{$min};
+
+  font-size: var(--responsive);
+
+  @include media(">phone") {
+    font-size: var(--responsive);
+  }
+}

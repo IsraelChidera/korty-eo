@@ -1,0 +1,291 @@
+.c-gallery {
+  &__header {
+    @include flex(space-between, center);
+    @include paragraph;
+    @include padding;
+    font-weight: 500;
+    text-transform: uppercase;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 10vh;
+    background: rgba($col-cream, 0.9);
+    z-index: 2;
+    right: 0;
+    position: fixed;
+
+    @include media(">tablet") {
+      // margin-bottom: 0px;
+    }
+  }
+
+  &__main {
+    @include padding;
+    margin-top: 10vh;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    @include media(">tablet") {
+      height: 80vh;
+      // overflow: hidden;
+      display: flex;
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+
+    // @media screen and (max-height: 700px) {
+    //   padding-top: 10;
+    //   padding-bottom: 10;
+    //   height: 85vh;
+    // }
+
+    > div {
+      width: 100%;
+
+      @include media(">tablet") {
+        max-height: 800px;
+        display: flex;
+      }
+    }
+
+    .gallery {
+      &__intro {
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+
+        @include media(">tablet") {
+          width: 340px;
+          height: 100%;
+          margin-right: 151px;
+        }
+
+        p {
+          @include paragraph;
+          color: $col-gray;
+          margin-bottom: 24px;
+          max-width: 280px;
+
+          @include media(">phone") {
+            max-width: 340px;
+          }
+
+          @include media(">tablet") {
+            margin-bottom: 40px;
+          }
+        }
+
+        h1 {
+          @include heading-3;
+          margin: 0 auto;
+          margin-bottom: 60px;
+          max-width: 200px;
+          text-align: right;
+
+          @include media(">phone") {
+            max-width: 380px;
+            margin-left: auto;
+            margin-right: unset;
+          }
+
+          @include media(">tablet") {
+            margin: unset;
+            margin-bottom: 48px;
+            max-width: unset;
+            text-align: left;
+          }
+        }
+
+        .home-link {
+          padding: 12px;
+          margin-bottom: 24px;
+          border: 1px solid #abb1ba;
+          border-radius: 64px;
+          @include title-small;
+          display: none;
+          width: fit-content;
+
+          @include media(">tablet") {
+            display: inline;
+          }
+        }
+
+        .credits-link {
+          &.show-mobile {
+            width: 120px;
+            height: 120px;
+            margin-left: auto;
+            margin-bottom: 56px;
+            @include media(">tablet") {
+              display: none;
+            }
+          }
+          &.show-desktop {
+            margin-top: auto;
+            display: none;
+
+            @include media(">tablet") {
+              display: block;
+            }
+          }
+        }
+      }
+
+      &__images {
+        height: 100%;
+        padding-top: 32px;
+        padding-bottom: 32px;
+
+        @include media(">tablet") {
+          display: flex;
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+
+        .c-image {
+          will-change: transform;
+          opacity: 0;
+        }
+
+        .c-circle {
+          width: 100%;
+          padding-top: 100%;
+          @include flex(center, center);
+          background: $col-black;
+          border-radius: 50%;
+          position: relative;
+
+          @include media(">tablet") {
+            height: 100%;
+            width: calc(80vh - 60px);
+            padding-top: 0;
+          }
+
+          &__inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            @include media(">tablet") {
+              position: static;
+              transform: translate(0, 0);
+            }
+            .heading {
+              margin: 0 auto;
+              margin-bottom: 28px;
+              @include flex(center);
+
+              h3 {
+                color: $col-cream;
+                @include heading-3;
+              }
+            }
+
+            .home-link {
+              padding: 12px;
+              margin-bottom: 24px;
+              border: 1px solid #abb1ba;
+              border-radius: 64px;
+              @include title-small;
+              display: inline-block;
+              width: fit-content;
+              color: $col-cream;
+
+              .c-link {
+                z-index: 1;
+              }
+            }
+          }
+        }
+
+        > div {
+          flex: 0 0 auto;
+          height: 100%;
+          overflow: hidden;
+          margin-bottom: 56px;
+
+          @include media(">tablet") {
+            margin-right: 50px;
+            margin-bottom: 0;
+          }
+
+          .bg-image {
+            background-size: cover;
+            background-position: 50% 0;
+            background-repeat: no-repeat;
+            height: 100%;
+            width: calc(100% + 2vw);
+            will-change: transform;
+          }
+
+          &.nobp {
+            .bg-image {
+              background-position: 50% 50%;
+            }
+          }
+
+          &.lg {
+            width: 100%;
+            height: 220px;
+
+            @include media(">phone") {
+              height: 620px;
+            }
+
+            @include media(">tablet") {
+              width: 1000px;
+              height: 100%;
+            }
+          }
+
+          &.md {
+            width: 100%;
+            height: 250px;
+
+            @include media(">phone") {
+              height: 650px;
+            }
+
+            @include media(">tablet") {
+              width: 800px;
+              height: 100%;
+            }
+          }
+
+          &.sm {
+            width: 100%;
+            height: 340px;
+
+            @include media(">phone") {
+              height: 740px;
+            }
+
+            @include media(">tablet") {
+              height: 100%;
+              width: 600px;
+            }
+          }
+
+          &.xs {
+            width: 100%;
+            height: 510px;
+
+            @include media(">phone") {
+              height: 910px;
+            }
+
+            @include media(">tablet") {
+              width: 400px;
+              height: 100%;
+            }
+          }
+
+          img {
+            height: 100%;
+            width: calc(100% + 10vw);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,291 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: $col-cream;
+  font-weight: 400;
+  color: $col-black;
+  font-family: "Grotesk", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  // cursor: none;
+}
+
+* {
+  box-sizing: border-box;
+  --responsive: calc(
+    (var(--min-size) * 0.06em) + (var(--max-size) - var(--min-size)) *
+      ((100vw - 420px) / (1200 - 420))
+  );
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.links {
+  position: relative;
+  white-space: nowrap;
+}
+
+.links::before,
+.links::after {
+  position: absolute;
+  width: 100%;
+  height: 0.5px;
+  background: #000000;
+  top: 100%;
+  left: 0;
+  pointer-events: none;
+}
+
+.links::before {
+  content: "";
+  /* show by default */
+}
+
+.links--elara::before {
+  transform-origin: 50% 100%;
+  transition: clip-path 0.3s, transform 0.3s cubic-bezier(0.2, 1, 0.8, 1);
+  clip-path: polygon(
+    0% 0%,
+    0% 100%,
+    0 100%,
+    0 0,
+    100% 0,
+    100% 100%,
+    0 100%,
+    0 100%,
+    100% 100%,
+    100% 0%
+  );
+}
+
+.links--elara:hover::before {
+  transform: translate3d(0, 2px, 0) scale3d(1.08, 3, 1);
+  clip-path: polygon(
+    0% 0%,
+    0% 100%,
+    50% 100%,
+    50% 0,
+    50% 0,
+    50% 100%,
+    50% 100%,
+    0 100%,
+    100% 100%,
+    100% 0%
+  );
+}
+
+.links--elara span {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.2, 1, 0.8, 1);
+}
+
+.links--elara:hover span {
+  transform: translate3d(0, -2px, 0);
+}
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  vertical-align: middle;
+  object-fit: cover;
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.menu__item {
+  position: relative;
+
+  &-label {
+    mix-blend-mode: difference;
+    // color: $col-cream;
+  }
+}
+
+.hover-reveal {
+  position: absolute;
+  z-index: -1;
+  width: 400px;
+  height: 400px;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.hover-reveal__inner {
+  overflow: hidden;
+}
+
+.hover-reveal__inner,
+.hover-reveal__video {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.hover-reveal__video {
+  object-fit: cover;
+  object-position: 50% 50%;
+
+  @include media("<=tablet") {
+    display: none;
+  }
+
+  &.mobile {
+    @include media("<=tablet") {
+      display: block;
+    }
+  }
+}
+
+.fraunces {
+  font-family: $fontSerif;
+}
+
+.show-mobile {
+  @include media(">phone") {
+    display: none;
+  }
+}
+
+.show-tablet {
+  @include media(">tablet") {
+    display: none;
+  }
+}
+
+.show-desktop {
+  @include media("<=tablet") {
+    display: none;
+  }
+}
+
+.credits-link {
+  width: 90px;
+  height: 90px;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  position: relative;
+  z-index: 5;
+  display: inline-block;
+  grid-row-start: 10;
+  border-radius: 50%;
+  position: relative;
+  margin-top: calc(100 / 12 * 1px);
+  // transform: translateY(15%);
+  @include flex(center, center);
+  @include paragraph;
+  text-transform: uppercase;
+  border: 1px solid #abb1ba;
+  background: transparent;
+  letter-spacing: -0.5px;
+}
+
+.span-overflow {
+  overflow: hidden;
+  // line-height: 1.4;
+
+  .ov-inner {
+    display: inline-block;
+  }
+}
+
+.link-overflow {
+  overflow: hidden;
+  display: inline-flex;
+}
+
+.ov-h {
+  overflow: hidden;
+}
+
+.c-exit {
+  position: fixed;
+  background: #000000;
+  height: 100vh;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: -10;
+  height: 0;
+  overflow: hidden;
+  @include flex(center, center);
+
+  h1 {
+    @include heading-2;
+    letter-spacing: -0.1em;
+    color: #ffffff;
+    padding-right: 10px;
+    margin-right: -10px;
+    font-style: italic;
+  }
+
+  span {
+    display: inline-block;
+  }
+}
+
+.cursor {
+  display: none;
+}
+
+@media (any-pointer: fine) {
+  .cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: block;
+    pointer-events: none;
+    z-index: 15;
+
+    @include media("<=tablet") {
+      display: none;
+    }
+  }
+
+  .cursor__inner {
+    fill: #e0530e;
+    stroke: none;
+    stroke-width: 1px;
+    opacity: 0.7;
+  }
+
+  .no-js .cursor {
+    display: none;
+  }
+}
+
+a,
+button {
+  color: inherit;
+}

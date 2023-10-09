@@ -1,0 +1,144 @@
+.c-preloader {
+  position: fixed;
+  background: #000000;
+  height: 100vh;
+  bottom: 0;
+  left: 0;
+  // top: 0;
+  width: 100%;
+  z-index: 20;
+  overflow: hidden;
+  @include flex(center, center);
+
+  &__inner {
+    height: 100%;
+    width: 100%;
+    @include flex(center, center);
+    position: relative;
+    @include padding;
+
+    > div {
+      display: grid;
+      width: 100%;
+      max-width: 340px;
+      height: 380px;
+
+      @include media(">phone") {
+        max-width: 382px;
+        height: 490px;
+      }
+
+      > div {
+        grid-area: 1/1;
+      }
+
+      .percentages__container {
+        @include flex(center, center);
+      }
+
+      .preloader-images {
+        position: relative;
+        bottom: 0;
+        display: grid;
+        z-index: 2;
+        // height: 0;
+
+        .con-1 {
+          opacity: 0;
+        }
+
+        .con-2 {
+          opacity: 0;
+          z-index: 2;
+        }
+
+        .image-con {
+          grid-area: 1/1;
+          width: 100%;
+          height: 100%;
+          position: relative;
+          overflow: hidden;
+
+          .image {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .image-1 {
+          background-image: url("https://res.cloudinary.com/dajnn3jbw/image/upload/v1696250624/korty/qtj0prs8wo9y58rseakz.jpg");
+          background-size: cover;
+          background-position: 50% 50%;
+          z-index: 1;
+          bottom: 0;
+          top: unset;
+        }
+
+        .image-2 {
+          background-image: url("https://res.cloudinary.com/dajnn3jbw/image/upload/v1696250623/korty/kugptlkdqphi6nsconnv.jpg");
+          background-size: cover;
+          background-position: 50% 0%;
+        }
+      }
+    }
+
+    .heading-1 {
+      @include heading-1;
+      font-weight: 400;
+      font-style: italic;
+      color: #ffffff;
+      .percentages {
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+        overflow-y: hidden;
+        overflow-x: visible;
+        padding-left: 20px;
+        margin-left: -20px;
+      }
+
+      .mark {
+        position: absolute;
+        left: 9px;
+
+        @include media(">tablet") {
+          left: 5px;
+        }
+      }
+
+      .fake-zero {
+        position: absolute;
+        z-index: 1;
+      }
+
+      .p-inner {
+        display: flex;
+        will-change: transform;
+      }
+
+      .subsequent {
+        position: absolute;
+      }
+
+      .hide-first {
+        letter-spacing: normal;
+        &::first-letter {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  &__footer {
+    @include heading-3;
+    color: #ffffff;
+    position: absolute;
+    left: 32px;
+    bottom: 32px;
+
+    @include media(">phone") {
+      left: 64px;
+      bottom: 105px;
+    }
+  }
+}
